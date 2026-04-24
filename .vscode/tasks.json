@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "shell",
+      "args": ["build", "${workspaceFolder}/VideoDownloader.csproj", "--configuration", "Debug"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish-win",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "publish",
+        "${workspaceFolder}/VideoDownloader.csproj",
+        "-c", "Release",
+        "-r", "win-x64",
+        "--self-contained", "true",
+        "-p:PublishSingleFile=true",
+        "-o", "${workspaceFolder}/dist/win"
+      ],
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "publish-linux",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "publish",
+        "${workspaceFolder}/VideoDownloader.csproj",
+        "-c", "Release",
+        "-r", "linux-x64",
+        "--self-contained", "true",
+        "-p:PublishSingleFile=true",
+        "-o", "${workspaceFolder}/dist/linux"
+      ],
+      "group": "build"
+    }
+  ]
+}
